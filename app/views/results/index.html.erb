@@ -1,0 +1,14 @@
+<h1 class="font-bold text-2xl">This is the results</h1>
+
+
+<div>Page: <%= params[:page] %></div>
+<div>Filter: <%= params[:filter] %></div>
+
+<%= form_with model: @post, url: results_path(page: params[:page], filter: params[:filter]) do |f| %>
+  <% if @post.errors.any? %>
+    <div style="color: red; font-weight: bold; padding: 8px;">Oh no there are errors</div>
+  <% end %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+  <%= link_to "cancel", root_path(page: params[:page], filter: params[:filter]) %>
+<% end %>

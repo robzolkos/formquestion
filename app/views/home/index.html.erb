@@ -1,0 +1,24 @@
+Home Page
+
+<ul>
+  <li><%= link_to "Page 1", root_path(page: 1, filter: params[:filter]) %></li>
+  <li><%= link_to "Page 2", root_path(page: 2, filter: params[:filter]) %></li>
+  <li><%= link_to "Page 3", root_path(page: 3, filter: params[:filter]) %></li>
+  <li><%= link_to "Page 4", root_path(page: 4, filter: params[:filter]) %></li>
+</ul>
+
+<ul>
+  <li><%= link_to "Dog", root_path(filter: "dog", page: params[:page]) %></li>
+  <li><%= link_to "Cat", root_path(filter: "cat", page: params[:page]) %></li>
+  <li><%= link_to "Mouse", root_path(filter: "mouse", page: params[:page]) %></li>
+  <li><%= link_to "Elephant", root_path(filter: "elephant", page: params[:page]) %></li>
+</ul>
+
+<% if params[:page].present? || params[:filter].present? %>
+  <h3 style="font-weight: bold; font-size: 14px;">Selected Page and Filters</h3>
+  <div>Page: <%= params[:page] %></div>
+  <div>Filter: <%= params[:filter] %></div>
+
+  <%= link_to "Show Result", results_path(page: params[:page], filter: params[:filter]) %>
+<% end %>
+
